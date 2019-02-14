@@ -1,0 +1,27 @@
+.item {
+    height:200px;
+    width:200px;
+}
+.a-item:nth-child(1) {
+    position: absolute;
+	top: 30px; 
+    left: 30px;
+    z-index: 1;
+    background: red;
+}
+
+.a-item:nth-child(2) {
+    position: absolute;
+	top: 90px; 
+    left: 90px; 
+    z-index: 2;
+    background: lawngreen;
+}
+
+.a-item:nth-child(3) {
+    position: absolute;
+	top: 150px; 
+    left: 150px; 
+    z-index: 1;
+    background: blue;
+}

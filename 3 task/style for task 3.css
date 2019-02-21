@@ -1,0 +1,63 @@
+.marginzero {
+    margin: 0px;
+}
+
+.marpadzero {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.list-group-item {
+    height: 65px;
+    padding: 0px;
+
+}
+
+.list-group-item div {
+    padding: 0px;
+    top: 12px;
+    left: 15px;
+}
+
+#promo {
+    background-color: rgb(0, 0, 0, 0.07);
+}
+
+#textPromo {
+    padding: 10px;
+}
+
+#inpPr {
+    border-radius: 5px 0px 0px 5px !important;
+}
+
+#butPr {
+    border-radius: 0px 5px 5px 0px !important;
+}
+
+.cartheader {
+    margin-bottom: 10px;
+}
+
+.jumbotron {
+    padding-bottom: 0px;
+}
+
+.firstpart{
+    padding-right: 10px !important;
+    margin-bottom: 100px;
+}
+
+.secpart {
+    padding-left: 20px !important;
+    margin-bottom: 100px;
+}
+
+.footer {
+    text-align: center;
+    width: 100%;
+}
+
+.total {
+    padding-top: 10px !important;
+}

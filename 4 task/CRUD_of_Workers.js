@@ -1,116 +1,83 @@
-class Workers {
-    constructor(name, age, spec, exp, salary, gender) {
-        this.name = name;
-        this.age = age;
-        this.spec = spec;
-        this.exp = exp;
-        this.salary = salary;
-        this.gender = gender;
-    }
-    get getName() {
+function Workers(name, age, spec, exp, salary, gender) {
+    this.name = name;
+    this.age = age;
+    this.spec = spec;
+    this.exp = exp;
+    this.salary = salary;
+    this.gender = gender;
+    
+    this.getName = function() {
         return this.name;
     };
-    /**
-     * @param {any} name
-     */
-    set setName(name) {
+    this.setName = function(name) {
         this.name = name;
     };
-    get getAge() {
+    this.getAge = function() {
         return this.age;
     };
-    /**
-     * @param {any} age
-     */
-    set setAge(age) {
+    this.setAge = function(age) {
         this.age = age;
     };
-    get getSpec() {
+    this.getSpec = function() {
         return this.spec;
     };
-    /**
-     * @param {any} spec
-     */
-    set setSpec(spec) {
+    this.setSpec = function(spec) {
         this.spec = spec;
     };
-    get getExp() {
+    this.getExp = function() {
         return this.exp;
     };
-    /**
-     * @param {any} exp
-     */
-    set setExp(exp) {
+    this.setExp = function(exp) {
         this.exp = exp;
     };
-    get getSalary() {
+    this.getSalary = function() {
         return this.salary;
     };
-    /**
-     * @param {any} salary
-     */
-    set setSalary(salary) {
+    this.setSalary = function(salary) {
         this.salary = salary;
     };
-    get getGender() {
+    this.getGender = function() {
         return this.gender;
     };
-    /**
-     * @param {any} gender
-     */
-    set setGender(gender) {
+    this.setGender = function(gender) {
         this.gender = gender;
     };
 }
 
-class Factory_Worker extends Workers {
-    constructor(name, age, spec, exp, salary, gender, factory, workshop) {
-        super(name, age, spec, exp, salary, gender);
-        this.factory = factory;
-        this.workshop = workshop;
-    }
-    get getFactory() {
+function Factory_Worker(name, age, spec, exp, salary, gender, factory, workshop) {
+    Workers.apply(this, arguments);
+    this.factory = factory;
+    this.workshop = workshop;
+
+    this.getFactory = function() {
         return this.factory;
     };
-    /**
-     * @param {any} factory
-     */
-    set setFactory(factory) {
+    this.setFactory = function(factory) {
         this.factory = factory;
     };
-    get getWorkshop() {
+    this.getWorkshop = function() {
         return this.workshop;
     };
-    /**
-     * @param {any} workshop
-     */
-    set setWorkshop(workshop) {
+    this.setWorkshop = function(workshop) {
         this.workshop = workshop;
     };
 }
 
-class Realway_Worker extends Workers {
-    constructor(name, age, spec, exp, salary, gender, realway, train) {
-        super(name, age, spec, exp, salary, gender);
-        this.realway = realway;
-        this.train = train;
-    }
-    get getRealway() {
+function Realway_Worker (name, age, spec, exp, salary, gender, realway, train) {
+    Workers.apply(this, arguments);
+    this.realway = realway;
+    this.train = train;
+
+    this.getRealway = function() {
         return this.realway;
     };
-    /**
-     * @param {any} realway
-     */
-    set setRealway(realway) {
+    this.setRealway = function(realway) {
         this.realway = realway;
     };
-    get getTrain() {
+    this.getTrain = function() {
         return this.train;
     };
-    /**
-     * @param {any} train
-     */
-    set setTrain(train) {
+    this.setTrain = function(train) {
         this.train = train;
     };
 }
@@ -191,7 +158,7 @@ var jsonrwork = JSON.stringify(realway_work);
 
 console.log(CreateWorker("Vazgen", 45, "Sympathetic", "No level", 0, "M", undefined, undefined, "Moskva-Minsk", "5142-06"));
 console.log(ReadWorker(jsonfwork));
-console.log(UpdateWorker(CreateWorker("Victor", 45, undefined, "No level", undefined, undefined, undefined, undefined, undefined, "5851-06")));
+console.log(UpdateWorker(CreateWorker("Victor", 45, undefined, "No level", undefined, undefined, undefined, undefined, undefined, "7851-06")));
 DeleteWorker(jsonrwork);
 console.log(work);
 console.log(factory_work);

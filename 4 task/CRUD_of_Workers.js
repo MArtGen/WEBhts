@@ -5,95 +5,90 @@ function Workers(name, age, spec, exp, salary, gender) {
     this.exp = exp;
     this.salary = salary;
     this.gender = gender;
-    
-    this.getName = function() {
-        return this.name;
-    };
-    this.setName = function(name) {
-        this.name = name;
-    };
-    this.getAge = function() {
-        return this.age;
-    };
-    this.setAge = function(age) {
-        this.age = age;
-    };
-    this.getSpec = function() {
-        return this.spec;
-    };
-    this.setSpec = function(spec) {
-        this.spec = spec;
-    };
-    this.getExp = function() {
-        return this.exp;
-    };
-    this.setExp = function(exp) {
-        this.exp = exp;
-    };
-    this.getSalary = function() {
-        return this.salary;
-    };
-    this.setSalary = function(salary) {
-        this.salary = salary;
-    };
-    this.getGender = function() {
-        return this.gender;
-    };
-    this.setGender = function(gender) {
-        this.gender = gender;
-    };
-}
+};
+Workers.prototype.getName = function () {
+    return this.name;
+};
+Workers.prototype.setName = function (name) {
+    this.name = name;
+};
+Workers.prototype.getAge = function () {
+    return this.age;
+};
+Workers.prototype.setAge = function (age) {
+    this.age = age;
+};
+Workers.prototype.getSpec = function () {
+    return this.spec;
+};
+Workers.prototype.setSpec = function (spec) {
+    this.spec = spec;
+};
+Workers.prototype.getExp = function () {
+    return this.exp;
+};
+Workers.prototype.setExp = function (exp) {
+    this.exp = exp;
+};
+Workers.prototype.getSalary = function () {
+    return this.salary;
+};
+Workers.prototype.setSalary = function (salary) {
+    this.salary = salary;
+};
+Workers.prototype.getGender = function () {
+    return this.gender;
+};
+Workers.prototype.setGender = function (gender) {
+    this.gender = gender;
+};
+
 
 function Factory_Worker(name, age, spec, exp, salary, gender, factory, workshop) {
     Workers.apply(this, arguments);
     this.factory = factory;
     this.workshop = workshop;
+};
+Factory_Worker.prototype.getFactory = function () {
+    return this.factory;
+};
+Factory_Worker.prototype.setFactory = function (factory) {
+    this.factory = factory;
+};
+Factory_Worker.prototype.getWorkshop = function () {
+    return this.workshop;
+};
+Factory_Worker.prototype.setWorkshop = function (workshop) {
+    this.workshop = workshop;
+};
 
-    this.getFactory = function() {
-        return this.factory;
-    };
-    this.setFactory = function(factory) {
-        this.factory = factory;
-    };
-    this.getWorkshop = function() {
-        return this.workshop;
-    };
-    this.setWorkshop = function(workshop) {
-        this.workshop = workshop;
-    };
-}
-
-function Realway_Worker (name, age, spec, exp, salary, gender, realway, train) {
+function Realway_Worker(name, age, spec, exp, salary, gender, realway, train) {
     Workers.apply(this, arguments);
     this.realway = realway;
     this.train = train;
-
-    this.getRealway = function() {
-        return this.realway;
-    };
-    this.setRealway = function(realway) {
-        this.realway = realway;
-    };
-    this.getTrain = function() {
-        return this.train;
-    };
-    this.setTrain = function(train) {
-        this.train = train;
-    };
-}
+};
+Realway_Worker.prototype.getRealway = function () {
+    return this.realway;
+};
+Realway_Worker.prototype.setRealway = function (realway) {
+    this.realway = realway;
+};
+Realway_Worker.prototype.getTrain = function () {
+    return this.train;
+};
+Realway_Worker.prototype.setTrain = function (train) {
+    this.train = train;
+};
 
 /* Create */
 function CreateWorker(name, age, spec, exp, salary, gender, factory, workshop, realway, train) {
     if (factory !== undefined || workshop !== undefined) {
         var worker = new Factory_Worker(name, age, spec, exp, salary, gender, factory, workshop);
-    } 
-    else if (realway !== undefined || train !== undefined) {
+    } else if (realway !== undefined || train !== undefined) {
         var worker = new Realway_Worker(name, age, spec, exp, salary, gender, realway, train);
-    } 
-    else if (realway == undefined && train == undefined && factory == undefined && workshop == undefined) {
+    } else if (realway == undefined && train == undefined && factory == undefined && workshop == undefined) {
         var worker = new Workers(name, age, spec, exp, salary, gender)
-    }
-    else {
+    } else {
         console.log("Error of create");
     };
     return JSON.stringify(worker);
@@ -108,26 +103,23 @@ function ReadWorker(json_worker) {
 /* Update */
 function UpdateWorker(json_worker) {
     var upd_worker = JSON.parse(json_worker);
-    if(upd_worker.factory !== undefined || upd_worker.workshop !== undefined) {
+    if (upd_worker.factory !== undefined || upd_worker.workshop !== undefined) {
         for (var i in factory_work) {
             factory_work[i] = upd_worker[i];
         }
         return factory_work;
-    } 
-    else if(upd_worker.realway !== undefined || upd_worker.train !== undefined) {
+    } else if (upd_worker.realway !== undefined || upd_worker.train !== undefined) {
         for (var i in upd_worker) {
             realway_work[i] = upd_worker[i];
         }
         return realway_work;
-    }
-    else if(upd_worker.realway == undefined && upd_worker.train == undefined && 
-            upd_worker.factory == undefined && upd_worker.workshop == undefined) {
+    } else if (upd_worker.realway == undefined && upd_worker.train == undefined &&
+        upd_worker.factory == undefined && upd_worker.workshop == undefined) {
         for (var i in work) {
             work[i] = upd_worker[i];
         }
         return work;
-    }
-    else {
+    } else {
         console.log("Error of update");
     }
 }
@@ -136,13 +128,11 @@ function UpdateWorker(json_worker) {
 /* Delete */
 function DeleteWorker(json_worker) {
     var upd_worker = JSON.parse(json_worker);
-    if(upd_worker.factory !== undefined || upd_worker.workshop !== undefined) {
+    if (upd_worker.factory !== undefined || upd_worker.workshop !== undefined) {
         factory_work = undefined;
-    }
-    else if(upd_worker.realway !== undefined || upd_worker.train !== undefined) {
+    } else if (upd_worker.realway !== undefined || upd_worker.train !== undefined) {
         realway_work = undefined;
-    }
-    else {
+    } else {
         work = undefined;
     }
 }

@@ -1,10 +1,23 @@
 function Workers(name, age, spec, exp, salary, gender) {
+    this.id = randomInteger(1000, 9999);
     this.name = name;
     this.age = age;
     this.spec = spec;
     this.exp = exp;
     this.salary = salary;
     this.gender = gender;
+
+    function randomInteger(min, max) {
+        var rand = min - 0.5 + Math.random() * (max - min + 1)
+        rand = Math.round(rand);
+        return rand;
+    }
+};
+Workers.prototype.getId = function () {
+    return this.id;
+};
+Workers.prototype.setId = function (id) {
+    this.id = id;
 };
 Workers.prototype.getName = function () {
     return this.name;
@@ -80,6 +93,7 @@ Realway_Worker.prototype.setTrain = function (train) {
     this.train = train;
 };
 
+/*For testing to localhost*/
 /* Create */
 function CreateWorker(name, age, spec, exp, salary, gender, factory, workshop, realway, train) {
     if (factory !== undefined || workshop !== undefined) {
@@ -135,6 +149,137 @@ function DeleteWorker(json_worker) {
     } else {
         work = undefined;
     }
+}
+
+/* For sending to server (object Worker)*/
+function onCreate(ev) {
+    ev.preventDefault();
+
+    var data = JSON.stringify({
+        "name": String(document.getElementById("cname").value),
+        "age": Number(document.getElementById("cage").value),
+        "spec": String(document.getElementById("cspec").value),
+        "exp": String(document.getElementById("cexp").value),
+        "salary": Number(document.getElementById("csal").value),
+        "gender": String(document.getElementById("cgen").value)
+    });
+
+    console.log(data);
+    xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            alert(this.responseText);
+            document.getElementById("createForm").dispatchEvent(new Event('submit'));
+        } 
+    });
+}
+
+function onRead() {
+    console.log('Reading');
+    xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.response);
+            result=JSON.parse(this.response);
+            var resultTBody=document.createElement('tbody');
+            result.map(function(nthWorker){
+                resultTBody.appendChild(parseWorkerToTableRow(nthWorker));
+            });
+            var table=document.getElementById('rTBody').parentElement;
+            table.replaceChild(resultTBody,document.getElementById('rTBody'));
+            resultTBody.id='rTBody';
+        }
+    });
+}
+
+function onPrepareUpdate(ev){
+    ev.preventDefault();
+    xhrids = new XMLHttpRequest();
+    xhrids.withCredentials = true;
+    xhrids.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            result=JSON.parse(this.response);
+            var ids=document.createElement('select');
+            ids.className='form-control';
+            result.map(function(nthWorker){
+                var id=document.createElement('option');
+                id.innerHTML=nthWorker['id'];
+                ids.appendChild(id);
+            });
+            var form=document.getElementById('uid').parentElement;
+            form.replaceChild(ids,document.getElementById('uid'));
+            ids.id='uid';
+        }
+    });
+}
+
+function onUpdate(ev) {
+    ev.preventDefault();  
+    var data = JSON.stringify({
+        "name": String(document.getElementById("uname").value),
+        "age": Number(document.getElementById("uage").value),
+        "spec": String(document.getElementById("uspec").value),
+        "exp": String(document.getElementById("uexp").value),
+        "salary": Number(document.getElementById("usal").value),
+        "gender": String(document.getElementById("ugen").value)
+    });
+    console.log(data);
+    xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    });
+}
+
+function onDelete(ev) {
+    ev.preventDefault();
+    xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    });
+}
+
+function parseWorkerToTableRow(Workers){
+    var row=document.createElement('tr');
+
+    id=document.createElement('th');
+    id.innerText=Workers['id'];
+    row.appendChild(id);
+
+    wname=document.createElement('td');
+    wname.innerText=Workers['name'];
+    row.appendChild(wname);
+
+    age=document.createElement('td');
+    age.innerText=Workers['age'];
+    row.appendChild(age);
+
+    spec=document.createElement('td');
+    spec.innerText=Workers['spec'];
+    row.appendChild(spec);
+
+    exp=document.createElement('td');
+    exp.innerText=Workers['exp'];
+    row.appendChild(exp);
+
+    salary=document.createElement('td');
+    salary.innerText=Workers['salary'];
+    row.appendChild(salary);
+
+    gender=document.createElement('td');
+    gender.innerText=Workers['gender'];
+    row.appendChild(gender);
+    console.log(row);
+    return row;
 }
 
 /* Test */

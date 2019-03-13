@@ -27,6 +27,7 @@ function onCreate(ev) {
 
 function onRead() {
     console.log('Reading');
+    
     xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 

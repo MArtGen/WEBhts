@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="./index.js" defer></script>
+</head>
+
+<body>
+    <div class="card-body">
+        <button id='1button' type="button" aria-expanded="false" onclick="newrequest('count')">
+            Count
+        </button>
+        <button id='2button' type="button" aria-expanded="false" onclick="newrequest('expand')">
+            Expand by Keith's Friends
+        </button>
+        <button id='3button' type="button" aria-expanded="false" onclick="newrequest('orderby')">
+            OrderBy LastName desc
+        </button>
+        <button id='4button' type="button" aria-expanded="false" onclick="newrequest('search')">
+            Search of Russell
+        </button>
+        <button id='5button' type="button" aria-expanded="false" onclick="newrequest('select')">
+            Select FirstName, LastName
+        </button>
+        <button id='6button' type="button" aria-expanded="false" onclick="newrequest('skip')">
+            Skip 10
+        </button>
+        <button id='7button' type="button" aria-expanded="false" onclick="newrequest('top')">
+            Top 2
+        </button>
+        <button id='8button' type="button" aria-expanded="false" onclick="newrequest('filter')">
+            Filter LN='Alfred'
+        </button>
+        <button id='9button' type="button" aria-expanded="false" onclick="newrequest('filter x3')">
+            Filter x3 Air
+        </button>
+        <button id='10button' type="button" aria-expanded="false" onclick="newrequest('string x3')">
+            String x3 Air
+        </button>
+        <table id="peoTab" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Concurrency</th>
+                    <th scope="col">Emails</th>
+                </tr>
+            </thead>
+            <tbody id='rTBody'>
+            </tbody>
+        </table>
+        <br>
+        <table id="airTab" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">IataCode</th>
+                    <th scope="col">IcaoCode</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody id='aTBody'>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

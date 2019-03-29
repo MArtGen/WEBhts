@@ -1,0 +1,82 @@
+<mvc:View
+	controllerName="sap.ui.demo.db.controller.App"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core">
+	<Panel>
+		<content>
+            <Table id="PeopleTable" 
+                   headerText="{i18n>peopleListTitle}" 
+                   items="{ path : '/value' }">
+                    <columns>
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>FirstName}"/>
+                        </Column>
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>LastName}"/>
+                        </Column>
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>MiddleName}"/>
+                        </Column>
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>UserName}"/>
+                        </Column>
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>Gender}"/>
+                        </Column>  
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>Age}"/>
+                        </Column>
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>HomeAddress}"/>
+                        </Column>
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>AddressInfo}"/>
+                        </Column>
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>Emails}"/>
+                        </Column>
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>Features}"/>
+                        </Column>  
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>FavoriteFeature}"/>
+                        </Column> 
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>BossOffice}"/>
+                        </Column>  
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>Budget}"/>
+                        </Column> 
+                        <Column minScreenWidth="Medium" demandPopin="true" hAlign="Left">
+                            <Text text="{i18n>Cost}"/>
+                        </Column> 
+                    </columns>
+                <items>
+				    <ColumnListItem>
+					    <cells>
+					        <Text text="{FirstName}" />
+					        <Text text="{LastName}" />
+                            <Text text="{MiddleName}" />
+                            <Text text="{UserName}" />
+                            <Text text="{Gender}" />
+                            <Text text="{Age}" />
+                            <Text text="{HomeAddress/Address} {HomeAddress/City}" />
+                            <Text text="{AddressInfo/0/Address} 
+                                        {AddressInfo/0/City/CountryRegion} 
+                                        {AddressInfo/0/City/Name} 
+                                        {AddressInfo/0/City/Boise}" />
+                            <Text text="{Emails/0} {Emails/1}" />
+                            <Text text="{Features/0} {Features/1}" />
+                            <Text text="{FavoriteFeature}" />
+                            <Text text="{BossOffice}" />
+                            <Text text="{Budget}" />
+                            <Text text="{Cost}" />
+					    </cells>
+				    </ColumnListItem>	
+				</items>
+            </Table>
+		</content>
+	</Panel>
+</mvc:View>

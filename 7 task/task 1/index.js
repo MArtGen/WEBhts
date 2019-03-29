@@ -98,18 +98,15 @@ function reading(str, tables) {
     console.log("Reading")
 }
 
-function newrequest(str) {
-    switch(str) {
-        case('count'):        reading('People?$count=true'); break;
-        case('expand'):       reading("People('keithpinckney')?$expand=Friends"); break;
-        case('orderby'):      reading('People?$orderby=LastName desc'); break;
-        case('search'):       reading('People?$search=Russell'); break;
-        case('select'):       reading('People?$select=FirstName, LastName'); break;
-        case('skip'):         reading('People?$skip=10'); break;  
-        case('top'):          reading('People?$top=2'); break;
-        case('filter'):       reading("People?$filter=LastName eq 'Alfred'"); break;
-        case('filter x3'):    reading("Airports?$filter=contains(Location/City/Region, 'California')", "airports"); break;
-        case('string x3'):    reading("Airports?$filter=IataCode eq 'CIA'&IcaoCode eq 'LIRA'&Name eq 'Rome Ciampino Airport'", "airports"); break;
-        default: console.log("Error of switch");
-    }
-}
+$(function(){
+    $('#1button').bind('click', function() { reading('People?$count=true'); });
+    $('#2button').bind('click', function() { reading("People('keithpinckney')?$expand=Friends"); });
+    $('#3button').bind('click', function() { reading('People?$orderby=LastName desc'); });
+    $('#4button').bind('click', function() { reading('People?$search=Russell'); });
+    $('#5button').bind('click', function() { reading('People?$select=FirstName, LastName'); });
+    $('#6button').bind('click', function() { reading('People?$skip=10'); });
+    $('#7button').bind('click', function() { reading('People?$top=2'); });
+    $('#8button').bind('click', function() { reading("People?$filter=LastName eq 'Alfred'"); });
+    $('#9button').bind('click', function() { reading("Airports?$filter=contains(Location/City/Region, 'California')", "airports"); });
+    $('#10button').bind('click', function() { reading("Airports?$filter=IataCode eq 'CIA'&IcaoCode eq 'LIRA'&Name eq 'Rome Ciampino Airport'", "airports"); });
+});

@@ -1,6 +1,6 @@
 var name = prompt("What's your name?", "Евлампий");
 var flag = false;
-var res;
+var res = "";
 for (var i = 0; i < (String(name)).length; i++)
 {
     if (String(parseInt(name.charAt(i), 10)) != "NaN")
@@ -11,7 +11,25 @@ for (var i = 0; i < (String(name)).length; i++)
 }
 if (flag == true)
 {
-    res = (String(name)).toUpperCase();
+
+    for (var i = 0; i < (String(name)).length; i++)
+    {
+        if (i % 2 == 0) 
+        {
+            if (String(name.charAt(i)).toLowerCase() == name[i])
+            {
+                res += name.charAt(i).toUpperCase();
+            }
+            else
+            {
+                res += name.charAt(i).toLowerCase();
+            }
+        }
+        else
+        {
+            res += name.charAt(i);
+        }
+    }
 }
 else
 {
